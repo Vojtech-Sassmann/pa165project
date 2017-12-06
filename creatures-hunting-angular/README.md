@@ -10,10 +10,6 @@ Then go to the creatures-hunting-angular directory and run `npm install @angular
 
 Verify by `ng -v`
 
-Then install material theme by `npm install --save @angular/material @angular/cdk`
-and `npm install --save @angular/animations`
-and `npm install --save hammerjs`
-
 Then run `npm install`
 
 And to run the project run with `ng serve`.  
