@@ -1,4 +1,4 @@
-package cz.fi.muni.pa165.rest;
+package cz.fi.muni.pa165.rest.security;
 
 import cz.fi.muni.pa165.dto.UserDTO;
 import org.apache.commons.codec.binary.Base64;
@@ -7,7 +7,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.http.Cookie;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -20,6 +19,7 @@ public class SecurityUtils {
 	public static final String COOKIE = "creatures-cookie-token";
 	public static final String INIT_VECTOR;
 	public static final String KEY;
+	public static final String AUTHENTICATE_USER = "authenticatedUser";
 
 	static {
 		try(InputStream input = SecurityUtils.class.getResourceAsStream("/server.properties")) {

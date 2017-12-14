@@ -4,7 +4,7 @@ import cz.fi.muni.pa165.dto.UserAuthenticateDTO;
 import cz.fi.muni.pa165.dto.UserDTO;
 import cz.fi.muni.pa165.facade.UserFacade;
 import cz.fi.muni.pa165.rest.ApiUris;
-import cz.fi.muni.pa165.rest.SecurityUtils;
+import cz.fi.muni.pa165.rest.security.SecurityUtils;
 import cz.fi.muni.pa165.rest.exceptions.NotAuthorizedException;
 import cz.fi.muni.pa165.rest.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
