@@ -72,7 +72,7 @@ public class MonstersController {
 
 		log.debug("rest createMonster({})", monster);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 
@@ -97,7 +97,7 @@ public class MonstersController {
 
 		log.debug("rest deleteMonster({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 
@@ -131,7 +131,7 @@ public class MonstersController {
 
 		monsterUpdate.setId(id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 

@@ -76,7 +76,7 @@ public class AreaController {
 
         log.debug("rest createArea({})", area);
 
-        roleResolver.resolve(request, UserRole.ADMIN);
+        roleResolver.hasRole(request, UserRole.ADMIN);
 
         AreaDTO areaWithSameName = areaFacade.findByName(area.getName());
         if (areaWithSameName != null) {
@@ -99,7 +99,7 @@ public class AreaController {
 
         log.debug("rest deleteArea({})", id);
 
-        roleResolver.resolve(request, UserRole.ADMIN);
+        roleResolver.hasRole(request, UserRole.ADMIN);
 
         try {
             areaFacade.deleteArea(id);
@@ -127,7 +127,7 @@ public class AreaController {
 
         log.debug("rest updateArea({})", areaUpdate);
 
-        roleResolver.resolve(request, UserRole.ADMIN);
+        roleResolver.hasRole(request, UserRole.ADMIN);
 
         if (areaUpdate.getId() == null) {
             throw new InvalidParameterException("Value 'id' is required.");

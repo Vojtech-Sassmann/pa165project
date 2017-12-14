@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class RoleResolverImpl implements RoleResolver {
 
 	@Override
-	public boolean resolve(HttpServletRequest request, UserRole role) {
+	public boolean hasRole(HttpServletRequest request, UserRole role) {
 
 		UserDTO user = (UserDTO) request.getAttribute(SecurityUtils.AUTHENTICATE_USER);
 

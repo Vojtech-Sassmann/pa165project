@@ -78,7 +78,7 @@ public class GlobalExceptionController {
 	}
 
 	@ExceptionHandler
-	@ResponseStatus(HttpStatus.UNAUTHORIZED)
+	@ResponseStatus(HttpStatus.FORBIDDEN)
 	@ResponseBody
 	public ApiError handleException(PrivilegeException e) {
 		ApiError apiError = new ApiError();

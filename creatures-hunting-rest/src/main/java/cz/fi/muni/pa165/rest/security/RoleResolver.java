@@ -17,7 +17,7 @@ public interface RoleResolver {
 	 * @param role role
 	 * @return true if given request contains user with given role, false otherwise
 	 */
-	boolean resolve(HttpServletRequest request, UserRole role);
+	boolean hasRole(HttpServletRequest request, UserRole role);
 
 	/**
 	 * Returns true if user from request is given user

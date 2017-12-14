@@ -52,7 +52,7 @@ public class SecurityFilter implements Filter {
 		String token = null;
 
 		for (Cookie cookie : cookies) {
-			if (SecurityUtils.COOKIE.equals(cookie.getName())) {
+			if (SecurityUtils.AUTH_COOKIE.equals(cookie.getName())) {
 				token = SecurityUtils.decrypt(SecurityUtils.KEY, SecurityUtils.INIT_VECTOR, cookie.getValue());
 			}
 		}

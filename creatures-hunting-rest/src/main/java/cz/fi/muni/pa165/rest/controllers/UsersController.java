@@ -55,7 +55,7 @@ public class UsersController {
 
 		log.debug("rest getAllUsers()");
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 
@@ -75,7 +75,7 @@ public class UsersController {
 
 		log.debug("rest findUserById({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN) &&
+		if(!roleResolver.hasRole(request, UserRole.ADMIN) &&
 				!roleResolver.isSelf(request, userFacade.findUserById(id)) ) {
 			throw new PrivilegeException("Not permitted.");
 		}
@@ -100,7 +100,7 @@ public class UsersController {
 
 		log.debug("rest findUserByEamil({})", email);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN) &&
+		if(!roleResolver.hasRole(request, UserRole.ADMIN) &&
 				!roleResolver.isSelf(request, userFacade.findUserByEmail(email)) ) {
 			throw new PrivilegeException("Not permitted.");
 		}
@@ -124,7 +124,7 @@ public class UsersController {
 
 		log.debug("rest deleteUser({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN) &&
+		if(!roleResolver.hasRole(request, UserRole.ADMIN) &&
 				!roleResolver.isSelf(request, userFacade.findUserById(id)) ) {
 			throw new PrivilegeException("Not permitted.");
 		}
@@ -154,7 +154,7 @@ public class UsersController {
 
 		log.debug("Rest registerUser ({}, {})" , userDTO, unencryptedPassword);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 
@@ -178,7 +178,7 @@ public class UsersController {
 
 		log.debug("rest isAdmin({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN) &&
+		if(!roleResolver.hasRole(request, UserRole.ADMIN) &&
 				!roleResolver.isSelf(request, userFacade.findUserById(id)) ) {
 			throw new PrivilegeException("Not permitted.");
 		}
@@ -202,7 +202,7 @@ public class UsersController {
 	public final void setAdmin(@RequestParam("id") long id, HttpServletRequest request){
 		log.debug("Rest setAdmin ({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 
@@ -225,7 +225,7 @@ public class UsersController {
 	public final void removeAdmin(@RequestParam("id") long id, HttpServletRequest request){
 		log.debug("Rest removeAdmin ({})", id);
 
-		if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+		if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
 			throw new PrivilegeException("Not permitted.");
 		}
 

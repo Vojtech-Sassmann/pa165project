@@ -14,7 +14,6 @@ import cz.fi.muni.pa165.rest.exceptions.ResourceAlreadyExistingException;
 import cz.fi.muni.pa165.rest.exceptions.ResourceNotFoundException;
 import cz.fi.muni.pa165.rest.security.RoleResolver;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,7 +66,7 @@ public class WeaponController {
 
         log.debug("Rest createWeapon ({})" , weaponCreateDTO);
 
-        if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+        if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
             throw new PrivilegeException("Not permitted.");
         }
 
@@ -92,7 +91,7 @@ public class WeaponController {
 
         log.debug("Rest deleteWeapon with id: {}" , id );
 
-        if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+        if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
             throw new PrivilegeException("Not permitted.");
         }
 
@@ -125,7 +124,7 @@ public class WeaponController {
 
         log.debug("Rest updateWeapon ({})",weaponUpdateDTO);
 
-        if(!roleResolver.resolve(request, UserRole.ADMIN)) {
+        if(!roleResolver.hasRole(request, UserRole.ADMIN)) {
             throw new PrivilegeException("Not permitted.");
         }
 
