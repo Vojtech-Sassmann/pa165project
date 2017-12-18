@@ -28,7 +28,7 @@ export class MonsterCreateComponent implements OnInit {
   ngOnInit() {
     this.cookie = this.cookieService.check('creatures-token');
     if (!this.cookie) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
       this.dialog.open(ErrorDialogComponent, {
         width: '600px',
         data: ["User is not logged in."],
@@ -40,7 +40,7 @@ export class MonsterCreateComponent implements OnInit {
 
   checkIfCookieExist(){
     if (!this.cookie){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 
@@ -51,7 +51,7 @@ export class MonsterCreateComponent implements OnInit {
     this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/monsters/create', json, {withCredentials: true}).subscribe(
       data => {
         console.log("Creating monster with name: " + name + ", height: " + height + ", weight: "+ weight + "and agility: " + agility + "was successful.");
-        this.router.navigate(['monsters']);
+        this.router.navigate(['/pa165/monsters']);
       }, (error: HttpErrorResponse) => {
         console.log("Error during creating monster with name: " + name + ", height: " + height + ", weight: "+ weight + "and agility: " + agility + ".");
       }

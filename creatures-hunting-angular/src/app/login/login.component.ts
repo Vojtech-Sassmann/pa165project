@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     this.http.post(this.config.apiEndpoint + '/pa165/rest/auth?email=' + email + '&password=' + password, null, { withCredentials: true }).subscribe(
       data=> {
         console.log('Data: ' + data);
-        this.router.navigate(['']);
+        this.router.navigate(['/pa165']);
       },
       error => {
         console.log('Error: ' + error);

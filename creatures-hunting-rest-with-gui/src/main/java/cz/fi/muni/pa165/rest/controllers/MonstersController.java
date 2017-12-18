@@ -58,8 +58,8 @@ public class MonstersController {
 
 	/**
 	 * Create a new Monster by POST method
-	 * curl -X POST -i -H "Content-Type: application/json" --data
-	 * '{"name":"test","height":155.2,"weight":70.5,"agility":"SLOW"}'
+	 * curl -X POST -i -H "Content-Type: application/json"
+	 * --data '{"name":"test","height":155.2,"weight":70.5,"agility":"SLOW"}'
 	 * http://localhost:8080/pa165/rest/auth/monsters/create
 	 *
 	 * @param monster MonsterCreateDTO with required fields for creation
@@ -104,7 +104,7 @@ public class MonstersController {
 		try {
 			monsterFacade.deleteMonster(id);
 		} catch (Exception e) {
-			throw new ResourceNotFoundException("Zombie not found");
+			throw new ResourceNotFoundException("Monster not found");
 		}
 	}
 
@@ -144,7 +144,7 @@ public class MonstersController {
 		MonsterDTO updatedMonster = monsterFacade.updateMonster(monsterUpdate);
 
 		if (updatedMonster == null) {
-			throw new ResourceNotFoundException("Zombie not found.");
+			throw new ResourceNotFoundException("Monster not found.");
 		}
 
 		return updatedMonster;
@@ -188,7 +188,7 @@ public class MonstersController {
 		MonsterDTO monster = monsterFacade.findById(id);
 
 		if (monster == null) {
-			throw new ResourceNotFoundException("Zombie not found.");
+			throw new ResourceNotFoundException("Monster not found.");
 		}
 
 		return monster;
@@ -211,7 +211,7 @@ public class MonstersController {
 		MonsterDTO monster = monsterFacade.findByName(name);
 
 		if (monster == null) {
-			throw new ResourceNotFoundException("Zombie not found.");
+			throw new ResourceNotFoundException("Monster not found.");
 		}
 
 		return monster;

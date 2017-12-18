@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <packaging>war</packaging>
-    <artifactId>creatures-hunting-rest</artifactId>
+    <artifactId>creatures-hunting-rest-with-gui</artifactId>
+    <name>REST with GUI</name>
 
     <build>
         <plugins>

@@ -30,7 +30,7 @@ export class AreaCreateComponent implements OnInit {
 
   checkIfCookieExist() {
     if (!this.cookie) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 
@@ -41,7 +41,7 @@ export class AreaCreateComponent implements OnInit {
     this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/areas/create', json, {withCredentials: true}).subscribe(
       data => {
         console.log("Updating area with name: " + name + ", type: " + areaType + "was successful.");
-        this.router.navigate(['/areas']);
+        this.router.navigate(['/pa165/areas']);
       }, error => {
         console.log("Error during updating area with name: " + name + ", type: " + areaType + "was successful.");
       }

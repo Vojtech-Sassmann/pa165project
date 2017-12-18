@@ -138,7 +138,7 @@ var AddMonstersComponent = (function () {
     AddMonstersComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     AddMonstersComponent = __decorate([
@@ -606,7 +606,7 @@ var LoginComponent = (function () {
         var _this = this;
         this.http.post(this.config.apiEndpoint + '/pa165/rest/auth?email=' + email + '&password=' + password, null, { withCredentials: true }).subscribe(function (data) {
             console.log('Data: ' + data);
-            _this.router.navigate(['']);
+            _this.router.navigate(['/pa165']);
         }, function (error) {
             console.log('Error: ' + error);
             alert('Error: ' + error.message);
@@ -896,7 +896,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     HomeComponent.prototype.loadMostWidespreadMonsters = function () {
@@ -1029,7 +1029,7 @@ var ManagerComponent = (function () {
     };
     ManagerComponent.prototype.logout = function () {
         this.http.delete(this.config.apiEndpoint + '/pa165/rest/auth', { withCredentials: true }).subscribe(function (data) { return console.log('Data: ' + data); }, function (error) { return console.log('Error: ' + error); });
-        this.router.navigate(['/login']);
+        this.router.navigate(['/pa165/login']);
     };
     ManagerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -1116,7 +1116,7 @@ var MonsterCreateComponent = (function () {
     MonsterCreateComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     MonsterCreateComponent.prototype.createMonster = function (name, height, weight, agility) {
@@ -1126,7 +1126,7 @@ var MonsterCreateComponent = (function () {
         var json = { "name": name, "height": height, "weight": weight, "agility": agility };
         this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/monsters/create', json, { withCredentials: true }).subscribe(function (data) {
             console.log("Creating monster with name: " + name + ", height: " + height + ", weight: " + weight + "and agility: " + agility + "was successful.");
-            _this.router.navigate(['monsters']);
+            _this.router.navigate(['/pa165monsters']);
         }, function (error) {
             console.log("Error during creating monster with name: " + name + ", height: " + height + ", weight: " + weight + "and agility: " + agility + ".");
         });
@@ -1229,7 +1229,7 @@ var MonsterDetailComponent = (function () {
     MonsterDetailComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     MonsterDetailComponent.prototype.loadData = function () {
@@ -1358,7 +1358,7 @@ var MonstersComponent = (function () {
     MonstersComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     MonstersComponent.prototype.loadMonsters = function () {
@@ -1485,7 +1485,7 @@ var UserCreateComponent = (function () {
     UserCreateComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     UserCreateComponent.prototype.createUser = function (firstName, lastName, email, password) {
@@ -1496,7 +1496,7 @@ var UserCreateComponent = (function () {
         console.log(json);
         this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/users/register?unencryptedPassword=' + password, json, { responseType: 'text', withCredentials: true }).subscribe(function (data) {
             console.log("Creating user with first name: " + firstName + ", last name: " + lastName + ", email: " + email + "was successful.");
-            _this.router.navigate(['users']);
+            _this.router.navigate(['/pa165users']);
         }, function (error) {
             console.log("Error during creating user with first name: " + firstName + ", last name: " + lastName + ", email: " + email + ".");
             console.log(error);
@@ -1614,7 +1614,7 @@ var UsersComponent = (function () {
     UsersComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     UsersComponent.prototype.loadUsers = function () {
@@ -1766,7 +1766,7 @@ var WeaponCreateComponent = (function () {
     WeaponCreateComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     WeaponCreateComponent.prototype.createWeapon = function (name, weaponType, range, magazineCapacity) {
@@ -1777,7 +1777,7 @@ var WeaponCreateComponent = (function () {
         console.log(json);
         this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/weapons/create', json, { withCredentials: true }).subscribe(function (data) {
             console.log("Creating weapon with name: " + name + ", type: " + weaponType + ", range: " + range + "and magazine capacity: " + magazineCapacity + "was successful.");
-            _this.router.navigate(['weapons']);
+            _this.router.navigate(['/pa165weapons']);
         }, function (error) {
             console.log("Error during creating weapon with name: " + name + ", type: " + weaponType + ", range: " + range + "and magazine capacity: " + magazineCapacity + "was successful.");
         });
@@ -1880,7 +1880,7 @@ var WeaponDetailComponent = (function () {
     WeaponDetailComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     WeaponDetailComponent.prototype.checkIsAdminCookie = function () {
@@ -2035,7 +2035,7 @@ var WeaponsComponent = (function () {
     WeaponsComponent.prototype.checkIfCookieExist = function () {
         if (!this.cookie) {
             alert("You must log in.");
-            this.router.navigate(['/login']);
+            this.router.navigate(['/pa165/login']);
         }
     };
     WeaponsComponent.prototype.checkIsAdminCookie = function () {

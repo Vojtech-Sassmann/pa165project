@@ -31,7 +31,7 @@ export class UserCreateComponent implements OnInit {
   ngOnInit() {
     this.cookie = this.cookieService.check('creatures-token');
     if (!this.cookie) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
       this.dialog.open(ErrorDialogComponent, {
         width: '600px',
         data: ["User is not logged in."],
@@ -56,7 +56,7 @@ export class UserCreateComponent implements OnInit {
 
   checkIfCookieExist(){
     if (!this.cookie){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 
@@ -68,7 +68,7 @@ export class UserCreateComponent implements OnInit {
     this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/users/register?unencryptedPassword=' + password, json, {responseType: 'text', withCredentials: true}).subscribe(
       data => {
         console.log("Creating user with first name: " + firstName + ", last name: " + lastName + ", email: "+ email + "was successful.");
-        this.router.navigate(['users']);
+        this.router.navigate(['/pa165/users']);
       }, error => {
         console.log("Error during creating user with first name: " + firstName + ", last name: " + lastName + ", email: "+ email + ".");
         console.log(error);

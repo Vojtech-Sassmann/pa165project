@@ -26,10 +26,10 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @author Vojtech Sassmann &lt;vojtech.sassmann@gmail.com&gt;
  */
 @WebFilter(urlPatterns = {
-		ApiUris.ROOT_AUTH + "/monsters/*",
-		ApiUris.ROOT_AUTH + "/areas/*",
-		ApiUris.ROOT_AUTH + "/weapons/*",
-		ApiUris.ROOT_AUTH + "/users/*"})
+		ApiUris.ROOT_URI_MONSTERS + "/*",
+		ApiUris.ROOT_URI_AREAS + "/*",
+		ApiUris.ROOT_URI_WEAPONS + "/*",
+		ApiUris.ROOT_URI_USERS + "/*"})
 public class SecurityFilter implements Filter {
 
 	private static final String LOGIN_ERROR_MESSAGE = "{\"errors\":[\"User is not logged in.\"]}";
@@ -53,8 +53,7 @@ public class SecurityFilter implements Filter {
 		Cookie[] cookies = request.getCookies();
 
 		if (cookies == null) {
-			filterChain.doFilter(request, response);
-			sendUnauthError(response);
+			sendUnAuthError(response);
 			return;
 		}
 
@@ -67,15 +66,13 @@ public class SecurityFilter implements Filter {
 		}
 
 		if (token == null) {
-			filterChain.doFilter(request, response);
-			sendUnauthError(response);
+			sendUnAuthError(response);
 			return;
 		}
 
 		String[] data = token.split(";", 2);
 		if (data.length != 2) {
-			filterChain.doFilter(request, response);
-			sendUnauthError(response);
+			sendUnAuthError(response);
 			return;
 		}
 
@@ -85,8 +82,7 @@ public class SecurityFilter implements Filter {
 		try {
 			id = Long.parseLong(data[0]);
 		} catch (NumberFormatException e) {
-			filterChain.doFilter(request, response);
-			sendUnauthError(response);
+			sendUnAuthError(response);
 			return;
 		}
 		email = data[1];
@@ -97,8 +93,7 @@ public class SecurityFilter implements Filter {
 
 		UserDTO user = userFacade.findUserById(id);
 		if (!user.getEmail().equals(email)) {
-			filterChain.doFilter(request, response);
-			sendUnauthError(response);
+			sendUnAuthError(response);
 			return;
 		}
 
@@ -107,7 +102,7 @@ public class SecurityFilter implements Filter {
 		filterChain.doFilter(request, response);
 	}
 
-	private void sendUnauthError(HttpServletResponse response) throws IOException {
+	private void sendUnAuthError(HttpServletResponse response) throws IOException {
 		response.setContentType("application/json");
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 		PrintWriter out = response.getWriter();

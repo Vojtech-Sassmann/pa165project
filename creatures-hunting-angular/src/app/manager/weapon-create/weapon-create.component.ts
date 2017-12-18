@@ -27,7 +27,7 @@ export class WeaponCreateComponent implements OnInit {
   ngOnInit() {
     this.cookie = this.cookieService.check('creatures-token');
     if (!this.cookie) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
       this.dialog.open(ErrorDialogComponent, {
         width: '600px',
         data: ["User is not logged in."],
@@ -38,7 +38,7 @@ export class WeaponCreateComponent implements OnInit {
 
   checkIfCookieExist(){
     if (!this.cookie){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 
@@ -50,7 +50,7 @@ export class WeaponCreateComponent implements OnInit {
     this.http.post<Weapon>(this.config.apiEndpoint + '/pa165/rest/auth/weapons/create', json, {withCredentials: true}).subscribe(
       data => {
         console.log("Creating weapon with name: " + name + ", type: " + weaponType + ", range: "+ range + "and magazine capacity: " + magazineCapacity + "was successful.");
-        this.router.navigate(['weapons']);
+        this.router.navigate(['/pa165/weapons']);
       }, error => {
         console.log("Error during creating weapon with name: " + name + ", type: " + weaponType + ", range: "+ range + "and magazine capacity: " + magazineCapacity + "was successful.");
       }

@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
 	ngOnInit() {
     this.cookie = this.cookieService.check('creatures-token');
     if (!this.cookie) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
       this.dialog.open(ErrorDialogComponent, {
         width: '600px',
         data: ["User is not logged in."],
@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
 
   checkIfCookieExist(){
     if (!this.cookie){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 

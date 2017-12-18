@@ -19,7 +19,7 @@ import {AreaCreateComponent} from "./manager/area-create/area-create.component";
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'pa165/login',
     component: LoginComponent
   },
   {
@@ -27,57 +27,62 @@ const routes: Routes = [
     component: ManagerComponent,
     children: [
       {
-        path: '',
+        path: 'pa165',
         component: HomeComponent
       },
       {
-        path: 'monsters',
+        path: 'pa165/monsters',
         component: MonstersComponent
       },
       {
-        path: 'monsters/:id',
+        path: 'pa165/monsters/:id',
         component: MonsterDetailComponent
       },
       {
-        path: 'create/monster',
+        path: 'pa165/create/monster',
         component: MonsterCreateComponent
       },
       {
-        path: 'weapons',
+        path: 'pa165/weapons',
         component: WeaponsComponent
       },
       {
-        path: 'weapons/:id',
+        path: 'pa165/weapons/:id',
         component: WeaponDetailComponent
       },
       {
-        path: 'create/weapon',
+        path: 'pa165/create/weapon',
         component: WeaponCreateComponent
       },
       {
-        path: 'users',
+        path: 'pa165/users',
         component: UsersComponent
       },
       {
-        path: 'create/user',
+        path: 'pa165/create/user',
         component: UserCreateComponent
       },
       {
-        path: 'areas',
+        path: 'pa165/areas',
         component: AreasComponent
       },
       {
-        path: 'areas/:id',
+        path: 'pa165/areas/:id',
         component: AreaDetailComponent
       },
       {
-        path: 'create/area',
+        path: 'pa165/create/area',
         component: AreaCreateComponent
+      }
+      ,
+      {
+        path: '**',
+        redirectTo: '/404'
       }
     ]
   },
   {
-    path:'**',
+    path:'404',
     component: Error404Component
   }
 ];

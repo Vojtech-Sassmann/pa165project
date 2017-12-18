@@ -36,6 +36,6 @@ export class ManagerComponent implements OnInit {
       data => console.log('Data: ' + data),
       error => console.log('Error: ' + error)
     )
-    this.router.navigate(['/login']);
+    this.router.navigate(['/pa165/login']);
   }
 }

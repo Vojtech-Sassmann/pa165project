@@ -43,7 +43,7 @@ export class MonstersComponent implements OnInit {
 
   checkIfCookieExist(){
     if (!this.cookie){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/pa165/login']);
     }
   }
 

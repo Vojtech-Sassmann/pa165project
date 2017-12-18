@@ -3,6 +3,7 @@
 <mat-card class="main-card mat-elevation-z4">
 
   <h3>The most widespread monsters:</h3>
+  <h5 class="note">(Monsters that are located in most areas)</h5>
 
   <mat-table #table [dataSource]="dataMonsters" *ngIf="showMonsters">
     <ng-container matColumnDef="id">
@@ -35,7 +36,8 @@
   </mat-table>
 
 
-  <h3>The most effective weapon:</h3>
+  <h3>The most effective weapons:</h3>
+  <h5 class="note">(Weapons that are effective against most monsters)</h5>
 
   <mat-table #table [dataSource]="dataWeapons" *ngIf="showWeapons">
 
@@ -68,7 +70,8 @@
     <mat-row *matRowDef="let row; columns: columnsWeapons;"></mat-row>
   </mat-table>
 
-  <h3>The Most dangerous areas:</h3>
+  <h3>The most dangerous areas:</h3>
+  <h5 class="note">(Areas with the biggest number of seen monsters)</h5>
 
   <mat-table #table [dataSource]="dataAreas" *ngIf="showAreas">
     <ng-container matColumnDef="id">
@@ -82,7 +85,7 @@
     </ng-container>
 
     <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef> Agility </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
       <mat-cell *matCellDef="let area"> {{area.type}} </mat-cell>
     </ng-container>
 
