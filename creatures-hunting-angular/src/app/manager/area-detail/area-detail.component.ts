@@ -105,7 +105,7 @@ export class AreaDetailComponent implements OnInit {
   removeMonsterFromArea(monsterId){
     this.cookie = this.cookieService.check('creatures-token');
     this.checkIfCookieExist();
-    this.http.put(this.config.apiEndpoint + '/pa165/rest/auth/areas/' + this.areaId + '/removeMonsterFromArea?monsterId='+ monsterId ,  null, {responseType: 'text', withCredentials: true}).subscribe(
+    this.http.post(this.config.apiEndpoint + '/pa165/rest/auth/areas/' + this.areaId + '/removeMonsterFromArea?id='+ monsterId ,  null, {responseType: 'text', withCredentials: true}).subscribe(
       data => {
         console.log("Removing monster with id: " + monsterId + " from area with id: " + this.areaId + "was successful.");
         this.loadData();
