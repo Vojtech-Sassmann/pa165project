@@ -10,7 +10,7 @@ import cz.fi.muni.pa165.enums.AreaType;
 import cz.fi.muni.pa165.facade.AreaFacade;
 import cz.fi.muni.pa165.facade.MonsterFacade;
 import cz.fi.muni.pa165.rest.controllers.GlobalExceptionController;
-import cz.fi.muni.pa165.rest.controllers.AreaController;
+import cz.fi.muni.pa165.rest.controllers.AreasController;
 import cz.fi.muni.pa165.rest.security.RoleResolver;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
@@ -52,21 +52,21 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
  *
  * @author Jan GOl <gol.honza@gmail.com>
  */
-public class AreaControllerTest {
+public class AreasControllerTest {
 
     private AreaFacade areaFacade = mock(AreaFacade.class);
     private MonsterFacade monsterFacade = mock(MonsterFacade.class);
     private RoleResolver roleResolver = mock(RoleResolver.class);
 
     @InjectMocks
-    private AreaController areaController = new AreaController(areaFacade, monsterFacade, roleResolver);
+    private AreasController areasController = new AreasController(areaFacade, monsterFacade, roleResolver);
 
     private MockMvc mockMvc;
 
     @BeforeClass
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = standaloneSetup(areaController)
+        mockMvc = standaloneSetup(areasController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter())
                 .setHandlerExceptionResolvers(createExceptionResolver())
                 .build();
@@ -263,7 +263,7 @@ public class AreaControllerTest {
 
         when(monsterFacade.findById(1L)).thenReturn(monsterDTO);
 
-        areaController.addMonsterToArea(1L, monsterDTO.getId());
+        areasController.addMonsterToArea(1L, monsterDTO.getId());
 
         mockMvc.perform(post("/pa165/rest/auth/areas/1/removeMonsterFromArea?id=1")
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

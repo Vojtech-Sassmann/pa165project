@@ -33,8 +33,8 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(ApiUris.ROOT_URI_WEAPONS)
-public class WeaponController {
-    private static final Logger log = LoggerFactory.getLogger(WeaponController.class);
+public class WeaponsController {
+    private static final Logger log = LoggerFactory.getLogger(WeaponsController.class);
 
     private final WeaponFacade weaponFacade;
 
@@ -43,7 +43,7 @@ public class WeaponController {
     private final RoleResolver roleResolver;
 
     @Inject
-    public WeaponController(WeaponFacade weaponFacade, MonsterFacade monsterFacade, RoleResolver roleResolver) {
+    public WeaponsController(WeaponFacade weaponFacade, MonsterFacade monsterFacade, RoleResolver roleResolver) {
         this.weaponFacade = weaponFacade;
         this.monsterFacade = monsterFacade;
         this.roleResolver = roleResolver;

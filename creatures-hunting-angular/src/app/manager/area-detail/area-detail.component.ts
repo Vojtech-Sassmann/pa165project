@@ -7,6 +7,7 @@ import {CookieService} from "ngx-cookie-service";
 import {AddMonstersToAreaComponent} from "../../add-monsters-to-area-dialog/add-monsters-to-area-dialog.component";
 import {ApplicationConfig, CONFIG_TOKEN} from "../../app-config";
 import {FormControl, Validators} from "@angular/forms";
+import {ErrorDialogComponent} from "../../error-dialog/error-dialog.component";
 
 @Component({
   selector: 'app-area-detail',
@@ -40,6 +41,14 @@ export class AreaDetailComponent implements OnInit {
 
   ngOnInit() {
     this.cookie = this.cookieService.check('creatures-token');
+    if (!this.cookie) {
+      this.router.navigate(['/pa165/login']);
+      this.dialog.open(ErrorDialogComponent, {
+        width: '600px',
+        data: ["User is not logged in."],
+      });
+      return;
+    }
     this.checkIsAdminCookie();
     this.loadData();
     this.nameFormControl = new FormControl('', [

@@ -38,16 +38,16 @@ import org.springframework.data.repository.query.Param;
 
 @RestController
 @RequestMapping(ApiUris.ROOT_URI_AREAS)
-public class AreaController {
+public class AreasController {
 
-    private final static Logger log = LoggerFactory.getLogger(AreaController.class);
+    private final static Logger log = LoggerFactory.getLogger(AreasController.class);
 
     private final AreaFacade areaFacade;
     private final MonsterFacade monsterFacade;
     private final RoleResolver roleResolver;
 
     @Inject
-    public AreaController(AreaFacade areaFacade, MonsterFacade monsterFacade, RoleResolver roleResolver) {
+    public AreasController(AreaFacade areaFacade, MonsterFacade monsterFacade, RoleResolver roleResolver) {
         this.areaFacade = areaFacade;
         this.monsterFacade = monsterFacade;
         this.roleResolver = roleResolver;

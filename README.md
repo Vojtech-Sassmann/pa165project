@@ -21,12 +21,29 @@ Wiki: https://github.com/VECTOUN/pa165project/wiki
 `cd creatures-hunting-rest-with-gui`
 `mvn tomcat7:run`
 
-Then the app is located at localhost:8080/pa165
+# Testing GUI
+
+The app is located at localhost:8080/pa165.
+First, you need to login. 
+
+Admin account: 
+   * Email: admin@admin.cz
+   * Password: admin
+
+Regular user account:
+   * Email: regular@regular.cz
+   * Password: regular
+
+
+
+# Testing REST
 
 The secured REST is located at localhost:8080/pa165/rest/auth/*
 The unsecured REST is located at localhost:8080/pa165/rest/unsecured/*
 
-To test the unsecured rest u can use Curl.
+The unsecured REST is created so you can test it with curl. It is not possible to use curl on secured rest (it will always
+return error 403).
+
 
 Curl examples:
 
@@ -46,7 +63,13 @@ Delete monster:
 `curl -i -X DELETE http://localhost:8080/pa165/rest/notsecured/monsters/1`
 
 Update monster:
-`curl -i -X PUT -H "Content-Type: application/json" - 40.2}' http://localhost:8080/pa165/rest/notsecured/monsters/2`
+`curl -i -X PUT -H "Content-Type: application/json" --data '{"agility": "FAST","name": "Zidan", "height": 160.2, "weight": 40.2}' http://localhost:8080/pa165/rest/notsecured/monsters/2`
 
 Get the most widespread monsters:
-`curl -i -X DELETE http://localhost:8080/pa165/rest/notsecured/monsters/filter/mostWidespread`
+`curl -i -X GET http://localhost:8080/pa165/rest/notsecured/monsters/filter/mostWidespread`
+
+Add monster to area:
+`curl -i -X POST -H "Content-Type: application/json" http://localhost:8080/pa165/rest/notsecured/areas/13/addMonsterToArea?id=2`
+
+Remove monster from area:
+`curl -i -X POST -H "Content-Type: application/json" http://localhost:8080/pa165/rest/notsecured/areas/13/removeMonsterFromArea?id=2`

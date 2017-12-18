@@ -10,7 +10,7 @@ import cz.fi.muni.pa165.enums.WeaponType;
 import cz.fi.muni.pa165.facade.MonsterFacade;
 import cz.fi.muni.pa165.facade.WeaponFacade;
 import cz.fi.muni.pa165.rest.controllers.GlobalExceptionController;
-import cz.fi.muni.pa165.rest.controllers.WeaponController;
+import cz.fi.muni.pa165.rest.controllers.WeaponsController;
 import cz.fi.muni.pa165.rest.security.RoleResolver;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
@@ -59,14 +59,14 @@ public class WeaponsControllerTest {
     private RoleResolver roleResolver = mock(RoleResolver.class);
 
     @InjectMocks
-    private WeaponController weaponController = new WeaponController(weaponFacade, monsterFacade, roleResolver);
+    private WeaponsController weaponsController = new WeaponsController(weaponFacade, monsterFacade, roleResolver);
 
     private MockMvc mockMvc;
 
     @BeforeClass
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-        mockMvc = standaloneSetup(weaponController)
+        mockMvc = standaloneSetup(weaponsController)
                 .setMessageConverters(new MappingJackson2HttpMessageConverter())
                 .setHandlerExceptionResolvers(createExceptionResolver())
                 .build();
@@ -280,7 +280,7 @@ public class WeaponsControllerTest {
         when(monsterFacade.findById(1L)).thenReturn(monsterDTO);
         when(weaponFacade.findById(1L)).thenReturn(pistol);
 
-        weaponController.addAppropriateMonster(1L, 1L);
+        weaponsController.addAppropriateMonster(1L, 1L);
 
         mockMvc.perform(put("/pa165/rest/auth/weapons/1/removeAppropriateMonster?monsterId=1"))
                 .andExpect(status().isOk());
