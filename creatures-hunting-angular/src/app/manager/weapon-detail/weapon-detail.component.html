@@ -6,7 +6,7 @@
   <div>
     <div>
       <mat-form-field>
-        <input matInput #name  placeholder="Name" value="{{weapon.name}}" disabled="{{!isAdmin}}" class="attribute" pattern="^[a-zA-Z]+$" [formControl]="nameFormControl">
+        <input matInput #name  placeholder="Name" value="{{weapon.name}}" class="attribute" pattern="^[a-zA-Z]+$" [formControl]="nameFormControl">
         <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
           This is not valid name!
         </mat-error>
@@ -29,7 +29,7 @@
 
     <div>
       <mat-form-field>
-        <input matInput #range placeholder="Range" value="{{weapon.range}}" disabled="{{!isAdmin}}"
+        <input matInput #range placeholder="Range" value="{{weapon.range}}"
                pattern="^[0-9]*$" [formControl]="rangeFormControl">
         <mat-error *ngIf="rangeFormControl.hasError('pattern')">
           This is not valid number!
@@ -38,7 +38,7 @@
     </div>
     <div>
       <mat-form-field>
-        <input matInput #magazineCapacity placeholder="Magazine Capacity" value="{{weapon.magazineCapacity}}" disabled="{{!isAdmin}}"
+        <input matInput #magazineCapacity placeholder="Magazine Capacity" value="{{weapon.magazineCapacity}}"
                pattern="^[0-9]*$" [formControl]="magazineFormControl">
         <mat-error *ngIf="magazineFormControl.hasError('pattern')">
           This is not valid number!

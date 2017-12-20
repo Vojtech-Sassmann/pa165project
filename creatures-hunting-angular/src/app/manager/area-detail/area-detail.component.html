@@ -6,7 +6,7 @@
   <div>
     <div>
       <mat-form-field>
-        <input matInput #name  placeholder="Name" value="{{area.name}}" disabled="{{!isAdmin}}" class="attribute" pattern="^[a-zA-Z]+$" [formControl]="nameFormControl">
+        <input matInput #name  placeholder="Name" value="{{area.name}}" class="attribute" pattern="^[a-zA-Z]+$" [formControl]="nameFormControl">
         <mat-error *ngIf="nameFormControl.hasError('pattern') && !nameFormControl.hasError('required')">
           This is not valid name!
         </mat-error>

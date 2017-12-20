@@ -47,11 +47,11 @@ export class MonsterDetailComponent implements OnInit {
     }
     this.checkIsAdminCookie();
     this.loadData();
-    this.nameFormControl = new FormControl('', [
+    this.nameFormControl = new FormControl({value: "", disabled: !this.isAdmin}, [
       Validators.required
     ]);
-    this.heightFormControl = new FormControl();
-    this.weightFormControl = new FormControl();
+    this.heightFormControl = new FormControl({value: "", disabled: !this.isAdmin});
+    this.weightFormControl = new FormControl({value: "", disabled: !this.isAdmin});
   }
 
   checkIsAdminCookie(){

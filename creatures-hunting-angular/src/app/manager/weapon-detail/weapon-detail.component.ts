@@ -53,11 +53,11 @@ export class WeaponDetailComponent implements OnInit {
     }
     this.checkIsAdminCookie();
     this.loadData();
-    this.nameFormControl = new FormControl('', [
+    this.nameFormControl = new FormControl({value: "", disabled: !this.isAdmin}, [
       Validators.required,
     ]);
-    this.rangeFormControl = new FormControl('', []);
-    this.magazineFormControl = new FormControl('', []);
+    this.rangeFormControl = new FormControl({value: "", disabled: !this.isAdmin}, []);
+    this.magazineFormControl = new FormControl({value: "", disabled: !this.isAdmin}, []);
   }
 
   checkIfCookieExist(){

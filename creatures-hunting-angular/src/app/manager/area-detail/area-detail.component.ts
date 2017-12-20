@@ -51,7 +51,7 @@ export class AreaDetailComponent implements OnInit {
     }
     this.checkIsAdminCookie();
     this.loadData();
-    this.nameFormControl = new FormControl('', [
+    this.nameFormControl = new FormControl({value: "", disabled: !this.isAdmin}, [
       Validators.required,
     ]);
   }
